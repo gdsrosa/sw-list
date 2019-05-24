@@ -1,8 +1,13 @@
 import React from 'react';
 
+import Characters from './components/Characters';
+import Starships from './components/Starships';
+import './styles/index.scss';
+
 const App = () => (
   <div>
-    <h1>SW List</h1>
+    <Characters />
+    <Starships />
   </div>
 );
 
