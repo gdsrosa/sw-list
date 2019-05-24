@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { handleFetchCharactersAsync } from '../store/actionCreators';
-import { getCharacters } from '../store/selectors';
+import { handleFetchCharactersAsync, getCharacters } from '../ducks/characters';
 
 const Characters = ({ handleFetchCharacters, characters, isLoading }) => (
   <div className="characters">
