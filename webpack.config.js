@@ -22,10 +22,17 @@ module.exports = ({ mode }) => ({
         test: /\.scss$/,
         use: ['style-loader', 'css-loader', 'sass-loader'],
       },
+      {
+        test: /\.(png|svg|jpe?g|gif)$/,
+        use: ['file-loader'],
+      },
     ],
   },
   plugins: [
-    new HtmlWebpackPlugin({ template: './src/index.html', filename: 'index.html' }),
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
+      filename: 'index.html',
+    }),
     new webpack.ProgressPlugin(),
   ],
 });
