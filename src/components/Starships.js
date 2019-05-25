@@ -9,21 +9,24 @@ const Starships = ({ isLoading, starships, handleFetchStarships }) => {
   return (
     <div className="starships col-sm-12">
       <div>
-        <h2>List of Starships</h2>
-        <button onClick={handleFetchStarships}>Display Starships</button>
+        <h2>Lista de Naves Espaciais</h2>
+        <button className="btn btn-warning" onClick={handleFetchStarships}>
+          Mostrar Naves
+        </button>
       </div>
-      <div className="row">
+      <div className="row starship">
         {starships.map(starship => (
           <div key={starship.name} className="col-sm-4">
             <div className="card">
               <div className="card-body">
                 <h5 className="card-title">{starship.name}</h5>
                 <p className="card-text">
-                  Passengers:{' '}
+                  Passageiros:{' '}
                   {starship.passengers <= 0
                     ? 'Just for one person'
                     : starship.passengers}{' '}
-                  | Consumables: {starship.consumables} | Crew: {starship.crew}
+                  | Consumíveis: {starship.consumables} | Tripulação:{' '}
+                  {starship.crew}
                 </p>
               </div>
             </div>

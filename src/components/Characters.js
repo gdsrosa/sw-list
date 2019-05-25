@@ -11,10 +11,12 @@ const Characters = ({ handleFetchCharacters, characters, isLoading }) => {
   return (
     <div className="characters col-sm-12">
       <div>
-        <h2>List of Characters</h2>
-        <button onClick={handleFetchCharacters}>Display Characters</button>
+        <h2>Lista de Personagens</h2>
+        <button className="btn btn-warning" onClick={handleFetchCharacters}>
+          Mostrar Personagens
+        </button>
       </div>
-      <div className="row">
+      <div className="row character">
         {characters.map(character => (
           <div key={character.name} className="col-sm-4">
             <div className="card">

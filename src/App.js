@@ -4,10 +4,9 @@ import { Router } from '@reach/router';
 import Characters from './components/Characters';
 import Starships from './components/Starships';
 import Nav from './components/Nav';
+import Home from './components/Home';
 
 import './styles/index.scss';
-
-const Home = () => <h1>Home</h1>;
 
 const App = () => (
   <div>
