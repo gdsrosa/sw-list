@@ -2,35 +2,37 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { handleFetchStarshipsAsync, getStarships } from '../ducks/starships';
 
-const Starships = ({ isLoading, starships, handleFetchStarships }) => (
-  <div className="starships">
-    {isLoading ? (
-      <div />
-    ) : (
+const Starships = ({ isLoading, starships, handleFetchStarships }) => {
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+  return (
+    <div className="starships col-sm-12">
       <div>
         <h2>List of Starships</h2>
         <button onClick={handleFetchStarships}>Display Starships</button>
-        <ul>
-          {starships.map(starship => (
-            <li key={starship.name}>
-              <strong>{starship.name}</strong>
-              <ul>
-                <li>
+      </div>
+      <div className="row">
+        {starships.map(starship => (
+          <div key={starship.name} className="col-sm-4">
+            <div className="card">
+              <div className="card-body">
+                <h5 className="card-title">{starship.name}</h5>
+                <p className="card-text">
                   Passengers:{' '}
                   {starship.passengers <= 0
                     ? 'Just for one person'
-                    : starship.passengers}
-                </li>
-                <li>Consumables: {starship.consumables}</li>
-                <li>Crew: {starship.crew}</li>
-              </ul>
-            </li>
-          ))}
-        </ul>
+                    : starship.passengers}{' '}
+                  | Consumables: {starship.consumables} | Crew: {starship.crew}
+                </p>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
-    )}
-  </div>
-);
+    </div>
+  );
+};
 
 const mapStateToProps = state => ({
   starships: getStarships(state),

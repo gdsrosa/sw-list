@@ -6,7 +6,7 @@ const FETCH_CHARACTERS = 'characters/FETCH_CHARACTERS';
 // Reducer
 const initialState = {
   characters: [],
-  isLoading: true,
+  isLoading: false,
 };
 
 export const charactersReducer = (state = initialState, action) => {
