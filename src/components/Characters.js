@@ -1,11 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { PushSpinner } from 'react-spinners-kit';
 
-import { handleFetchCharactersAsync, getCharacters } from '../ducks/characters';
+import {
+  handleFetchCharactersAsync,
+  getCharacters,
+  getLoading,
+} from '../ducks/characters';
 
 const Characters = ({ handleFetchCharacters, characters, isLoading }) => {
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="col-sm-12">
+        <h5>Carregando</h5>
+        <PushSpinner size={30} color="#f3ce5d" loading={isLoading} />
+      </div>
+    );
   }
 
   return (
@@ -13,7 +23,7 @@ const Characters = ({ handleFetchCharacters, characters, isLoading }) => {
       <div>
         <h2>Lista de Personagens</h2>
         <button className="btn btn-warning" onClick={handleFetchCharacters}>
-          Mostrar Personagens
+          Listar Personagens
         </button>
       </div>
       <div className="row character">
@@ -33,6 +43,7 @@ const Characters = ({ handleFetchCharacters, characters, isLoading }) => {
 
 const mapStateToProps = state => ({
   characters: getCharacters(state),
+  isLoading: getLoading(state),
 });
 
 const mapDispatchToProps = dispatch => ({

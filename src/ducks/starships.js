@@ -2,16 +2,22 @@ import * as Utils from '../utils';
 
 //Action Type
 const FETCH_STARSHIPS = 'starships/FETCH_STARSHIPS';
+const FETCH_STARSHIPS_SUCCESS = 'starships/FETCH_STARSHIPS_SUCCESS';
 
 // Reducer
 const initialState = {
   starships: [],
-  isLoading: true,
+  isLoading: false,
 };
 
 export const starshipsReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_STARSHIPS:
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case FETCH_STARSHIPS_SUCCESS:
       return {
         ...state,
         starships: action.payload.starships,
@@ -24,10 +30,14 @@ export const starshipsReducer = (state = initialState, action) => {
 
 //Selectors
 export const getStarships = state => state.starshipsReducer.starships;
+export const getLoading = state => state.starshipsReducer.isLoading;
 
 //Action Creators
-export const handleFetchStarships = starships => ({
+export const handleFetchStarships = () => ({
   type: FETCH_STARSHIPS,
+});
+export const handleFetchStarshipsSuccess = starships => ({
+  type: FETCH_STARSHIPS_SUCCESS,
   payload: {
     starships,
   },
@@ -35,6 +45,7 @@ export const handleFetchStarships = starships => ({
 
 export const handleFetchStarshipsAsync = () => {
   return dispatch => {
+    dispatch(handleFetchStarships());
     new Promise((resolve, reject) => {
       Utils.getStarships(
         'https://swapi.co/api/starships/',
@@ -42,6 +53,6 @@ export const handleFetchStarshipsAsync = () => {
         resolve,
         reject
       );
-    }).then(starships => dispatch(handleFetchStarships(starships)));
+    }).then(starships => dispatch(handleFetchStarshipsSuccess(starships)));
   };
 };

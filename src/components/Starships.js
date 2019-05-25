@@ -1,17 +1,25 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { PushSpinner } from 'react-spinners-kit';
+
 import { handleFetchStarshipsAsync, getStarships } from '../ducks/starships';
+import { getLoading } from '../ducks/starships';
 
 const Starships = ({ isLoading, starships, handleFetchStarships }) => {
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="col-sm-12">
+        <h5>Carregando</h5>
+        <PushSpinner size={30} color="#f3ce5d" loading={isLoading} />
+      </div>
+    );
   }
   return (
     <div className="starships col-sm-12">
       <div>
         <h2>Lista de Naves Espaciais</h2>
         <button className="btn btn-warning" onClick={handleFetchStarships}>
-          Mostrar Naves
+          Listar Naves
         </button>
       </div>
       <div className="row starship">
@@ -23,10 +31,10 @@ const Starships = ({ isLoading, starships, handleFetchStarships }) => {
                 <p className="card-text">
                   Passageiros:{' '}
                   {starship.passengers <= 0
-                    ? 'Just for one person'
-                    : starship.passengers}{' '}
-                  | Consumíveis: {starship.consumables} | Tripulação:{' '}
-                  {starship.crew}
+                    ? 'Está nave não transporta passageiros.'
+                    : Number(starship.passengers)}{' '}
+                  <br /> Fabricante: {starship.manufacturer} <br /> Tripulação:{' '}
+                  {starship.crew} <br /> Modelo: {starship.model}
                 </p>
               </div>
             </div>
@@ -39,6 +47,7 @@ const Starships = ({ isLoading, starships, handleFetchStarships }) => {
 
 const mapStateToProps = state => ({
   starships: getStarships(state),
+  isLoading: getLoading(state),
 });
 
 const mapDispatchToProps = dispatch => ({
