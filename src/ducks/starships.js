@@ -1,8 +1,8 @@
 import * as Utils from '../utils';
 
 //Action Type
-const FETCH_STARSHIPS = 'starships/FETCH_STARSHIPS';
-const FETCH_STARSHIPS_SUCCESS = 'starships/FETCH_STARSHIPS_SUCCESS';
+export const FETCH_STARSHIPS = 'starships/FETCH_STARSHIPS';
+export const FETCH_STARSHIPS_SUCCESS = 'starships/FETCH_STARSHIPS_SUCCESS';
 
 // Reducer
 const initialState = {

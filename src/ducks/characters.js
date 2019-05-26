@@ -1,8 +1,8 @@
 import * as Utils from '../utils';
 
 //Action Type
-const FETCH_CHARACTERS = 'characters/FETCH_CHARACTERS';
-const FETCH_CHARACTERS_SUCCESS = 'characters/FETCH_CHARACTERS_SUCCESS';
+export const FETCH_CHARACTERS = 'characters/FETCH_CHARACTERS';
+export const FETCH_CHARACTERS_SUCCESS = 'characters/FETCH_CHARACTERS_SUCCESS';
 
 // Reducer
 const initialState = {
@@ -30,11 +30,11 @@ export const getCharacters = state => state.charactersReducer.characters;
 export const getLoading = state => state.charactersReducer.isLoading;
 
 //Action Creators
-const handleFetchCharacters = () => ({
+export const handleFetchCharacters = () => ({
   type: FETCH_CHARACTERS,
 });
 
-const handleFetchCharactersSuccess = characters => ({
+export const handleFetchCharactersSuccess = characters => ({
   type: FETCH_CHARACTERS_SUCCESS,
   payload: {
     characters,
