@@ -45,7 +45,7 @@ export const handleFetchCharactersAsync = () => {
   return dispatch => {
     dispatch(handleFetchCharacters());
     new Promise((resolve, reject) => {
-      Utils.getPeople('https://swapi.co/api/people/', [], resolve, reject);
+      Utils.getPeople('https://swapi.dev/api/people/', [], resolve, reject);
     }).then(characters => {
       dispatch(handleFetchCharactersSuccess(characters));
     });

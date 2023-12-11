@@ -48,7 +48,7 @@ export const handleFetchStarshipsAsync = () => {
     dispatch(handleFetchStarships());
     new Promise((resolve, reject) => {
       Utils.getStarships(
-        'https://swapi.co/api/starships/',
+        'https://swapi.dev/api/starships/',
         [],
         resolve,
         reject
