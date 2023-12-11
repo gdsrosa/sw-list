@@ -18,11 +18,11 @@ export const getPeople = (url, people, resolve, reject) => {
     });
 };
 
-export const getStarships = (url, starhips, resolve, reject) => {
+export const getStarships = (url, starships, resolve, reject) => {
   axios
     .get(url)
     .then(response => {
-      const retrivedStarships = starhips.concat(response.data.results);
+      const retrivedStarships = starships.concat(response.data.results);
       if (response.data.next !== null) {
         getStarships(response.data.next, retrivedStarships, resolve, reject);
       } else {
