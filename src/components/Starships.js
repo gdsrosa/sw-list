@@ -32,7 +32,7 @@ const Starships = ({ isLoading, starships, handleFetchStarships }) => {
                   Passageiros:{' '}
                   {starship.passengers <= 0
                     ? 'Está nave não transporta passageiros.'
-                    : Number(starship.passengers)}{' '}
+                    : starship.passengers}
                   <br /> Fabricante: {starship.manufacturer} <br /> Tripulação:{' '}
                   {starship.crew} <br /> Modelo: {starship.model}
                 </p>
