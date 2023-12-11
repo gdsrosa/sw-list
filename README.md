@@ -1,6 +1,6 @@
 # SW List
 
-An application that lists information about Star Wars characters and your respective starthips.
+An application that lists information about Star Wars characters and your respective starthips. The application content it's all in Portuguese (Brazil), please feel free to translate via your browser. :)
 
 ## Getting Started
 
@@ -13,7 +13,7 @@ cd sw-list
 
 ### Installing
 
-Assuming you have all the Node.js and NPM environment setup in your machine:
+Assuming you have all the Node.js (version 14.15.0) and NPM (version 6.14.8) environment setup in your machine:
 
 Let's install the dependencies
 
